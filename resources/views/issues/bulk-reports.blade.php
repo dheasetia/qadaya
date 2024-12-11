@@ -70,7 +70,7 @@
                         "Content-Type": "application/json",
                         "Accept": "application/json",
                         "X-Requested-With": "XMLHttpRequest",
-                        "X_CSRF-TOKEN": csrf_string
+                        "X_CSRF-TOKEN": "<?php echo csrf_token() ?>"
                     },
                     method: "POST",
                     credentials: "same-origin",
