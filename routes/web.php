@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\Storage;
 //});
 //
 
+Route::get('/abah', function () {
+    return "hello abah";
+});
+
+
 Route::get('/', function () {
     return redirect('issues');
 })->name('dashboard');
