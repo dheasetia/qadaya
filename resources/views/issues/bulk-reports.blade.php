@@ -92,7 +92,7 @@
             const loader = document.getElementById('regenerate-pdf-loader');
             const button = document.getElementById('btn-regenerate-pdf');
 
-            const csrf_string = "<?php echo csrf_token() ?>";
+            {{--const csrf_string = "<?php echo csrf_token() ?>";--}}
             const url = "<?php echo(url('api/generate-pdf')) ?>"
             try {
                 loader.classList.remove('d-none');
@@ -102,7 +102,7 @@
                         "Content-Type": "application/json",
                         "Accept": "application/json",
                         "X-Requested-With": "XMLHttpRequest",
-                        "X_CSRF-TOKEN": csrf_string
+                        "X_CSRF-TOKEN": "<?php echo csrf_token() ?>"
                     },
                     method: "POST",
                     credentials: "same-origin",
