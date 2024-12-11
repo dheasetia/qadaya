@@ -42,7 +42,7 @@ class ApiController extends Controller
 
             $file_name = $current_office . '.pdf';
             $template = view('issues.report-pdf-template', compact('current_office', 'offices', 'issues', 'easy_issues_count', 'easy_issues_late_count', 'easy_issues_not_late_count', 'no_next_appointment_count', 'five_sessions_count', 'old_issues_count', 'total_warning'))->render();
-            Browsershot::html($template)->showBackground()->margins(4, 4, 4, 4)->save(storage_path('app/public/' . $file_name));
+            Browsershot::html($template)->noSandbox()->showBackground()->margins(4, 4, 4, 4)->save(storage_path('app/public/' . $file_name));
             IssueFile::create([
                 'office_name' => $file_name
             ]);
