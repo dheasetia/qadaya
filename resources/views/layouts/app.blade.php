@@ -75,6 +75,9 @@
         body.dark .table > thead > tr > th {
             letter-spacing: normal!important;
         }
+        td {
+            letter-spacing: normal!important;
+        }
     </style>
     @yield('custom_styles')
     @toastifyCss
