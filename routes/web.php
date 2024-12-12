@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Storage;
 //
 
 Route::get('/abah', function () {
-    return "hello abah";
+    return view('check');
 });
 
 

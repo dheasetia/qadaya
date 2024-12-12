@@ -7,7 +7,7 @@
             <div class="nav-logo">
                 <div class="nav-item theme-logo">
                     <a href="/">
-                        <img src="/" class="navbar-logo" alt="logo">
+                        <img src="{{asset('src/assets/img/moj.png')}}" alt="">
                     </a>
                 </div>
             </div>
@@ -115,7 +115,7 @@
                     </div>
                 </a>
             </li>
-            <li class="menu {{request()->is('issues/bulk-reports') ? 'active' : ''}}">
+            <li class="menu {{request()->is('issues/bulk-reports') ? 'active' : ''}}" style="margin-bottom: 400px;">
                 <a href="{{route('issues.bulk-reports')}}" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-archive"><polyline points="21 8 21 21 3 21 3 8"></polyline><rect x="1" y="3" width="22" height="5"></rect><line x1="10" y1="12" x2="14" y2="12"></line></svg>

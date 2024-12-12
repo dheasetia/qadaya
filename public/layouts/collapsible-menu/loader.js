@@ -15,8 +15,8 @@ window.addEventListener("load", function(){
                 darkMode: true,
                 boxed: true,
                 logo: {
-                    darkLogo: '/src/assets/img/moj.png',
-                    lightLogo: '/src/assets/img/moj.png'
+                    darkLogo: '../src/assets/img/logo.svg',
+                    lightLogo: '../src/assets/img/logo2.svg'
                 }
             }
         },
@@ -37,7 +37,7 @@ window.addEventListener("load", function(){
         ParsedObject = getParseObject;
 
         if (getcorkThemeObject !== null) {
-
+               
             if (ParsedObject.admin === 'Cork Admin Template') {
 
                 if (ParsedObject.settings.layout.name === layoutName) {
@@ -46,7 +46,7 @@ window.addEventListener("load", function(){
                 } else {
                     corkThemeObject = settingsObject;
                 }
-
+                
             } else {
                 if (ParsedObject.admin === undefined) {
                     corkThemeObject = settingsObject;
@@ -59,18 +59,18 @@ window.addEventListener("load", function(){
     }
 
     // Get Dark Mode Information i.e darkMode: true or false
-
+    
     if (corkThemeObject.settings.layout.darkMode) {
         localStorage.setItem("theme", JSON.stringify(corkThemeObject));
         getcorkThemeObject = localStorage.getItem("theme");
         getParseObject = JSON.parse(getcorkThemeObject)
-
+    
         if (getParseObject.settings.layout.darkMode) {
             ifStarterKit = document.body.getAttribute('page') === 'starter-pack' ? true : false;
             document.body.classList.add('dark');
             if (ifStarterKit) {
                 if (document.querySelector('.navbar-logo')) {
-                    document.querySelector('.navbar-logo').setAttribute('src', '/src/assets/img/moj.png')
+                    document.querySelector('.navbar-logo').setAttribute('src', '../../src/assets/img/logo.svg')
                 }
             } else {
                 if (document.querySelector('.navbar-logo')) {
@@ -95,20 +95,20 @@ window.addEventListener("load", function(){
                     document.querySelector('.navbar-logo').setAttribute('src', getParseObject.settings.layout.logo.lightLogo)
                 }
             }
-
+            
         }
     }
 
     // Get Layout Information i.e boxed: true or false
 
     if (corkThemeObject.settings.layout.boxed) {
-
+    
         localStorage.setItem("theme", JSON.stringify(corkThemeObject));
         getcorkThemeObject = localStorage.getItem("theme");
         getParseObject = JSON.parse(getcorkThemeObject)
-
+    
         if (getParseObject.settings.layout.boxed) {
-
+            
             if (document.body.getAttribute('layout') !== 'full-width') {
                 document.body.classList.add('layout-boxed');
                 if (document.querySelector('.header-container')) {
@@ -126,15 +126,15 @@ window.addEventListener("load", function(){
                     document.querySelector('.middle-content').classList.remove('container-xxl');
                 }
             }
-
+            
         }
-
+        
     } else {
-
+        
         localStorage.setItem("theme", JSON.stringify(corkThemeObject));
         getcorkThemeObject = localStorage.getItem("theme");
         getParseObject = JSON.parse(getcorkThemeObject)
-
+        
         if (!getParseObject.settings.layout.boxed) {
 
             if (document.body.getAttribute('layout') !== 'boxed') {
@@ -157,9 +157,9 @@ window.addEventListener("load", function(){
         }
     }
 
+    
 
 
-
-
+    
 });
 
