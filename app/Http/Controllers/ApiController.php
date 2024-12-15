@@ -15,7 +15,6 @@ class ApiController extends Controller
     public function generate_pdf()
     {
         $offices = DB::table('issues')->distinct('office')->pluck('office');
-
         //delete pdfs;
         $deleted_issues = IssueFile::all();
         foreach ($deleted_issues as $deleted_issue) {
