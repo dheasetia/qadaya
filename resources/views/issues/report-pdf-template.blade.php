@@ -36,7 +36,14 @@
             height: 20px!important;
             position: relative;
         }
+        .table tbody tr td.td-row {
+            padding: 2px 10px!important;
+            text-align: center;
+        }
 
+       .header-container {
+            display: none!important;
+        }
     </style>
 @endsection
 
@@ -231,12 +238,12 @@
                 @else
                     @foreach($issues as $issue)
                         <tr>
-                            <td>{{$loop->iteration}}</td>
-                            <td>{{$issue->issue_number}}</td>
-                            <td class="d-flex d-flex justify-content-between">{!!Helper::render_easy_status($issue)  !!}</td>
-                            <td>{!! Helper::render_appointment($issue->has_future_appointment) !!}</td>
-                            <td>{!! Helper::render_session($issue->sessions) !!}</td>
-                            <td>{!! Helper::render_age($issue->age) !!}</td>
+                            <td class="td-row">{{$loop->iteration}}</td>
+                            <td class="td-row">{{$issue->issue_number}}</td>
+                            <td class="td-row">{!!Helper::render_easy_status($issue)  !!}</td>
+                            <td class="td-row">{!! Helper::render_appointment($issue->has_future_appointment) !!}</td>
+                            <td class="td-row">{!! Helper::render_session($issue->sessions) !!}</td>
+                            <td class="td-row">{!! Helper::render_age($issue->age) !!}</td>
                         </tr>
                     @endforeach
                 @endif

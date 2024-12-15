@@ -14,12 +14,14 @@ class ApiController extends Controller
 {
     public function generate_pdf()
     {
-        $offices = DB::table('issues')->distinct()->pluck('office');
+        $offices = DB::table('issues')->distinct('office')->pluck('office');
+
+        //delete pdfs;
+        $deleted_issues = IssueFile::all();
+        foreach ($deleted_issues as $deleted_issue) {
+            $deleted_issue->delete();
+        }
         foreach ($offices as $office) {
-            $deleted_issues = IssueFile::where('office_name', $office)->get();
-            foreach ($deleted_issues as $deleted_issue) {
-                $deleted_issue->delete();
-            }
             $easy_issues_count = 0;
             $no_next_appointment_count = 0;
             $five_sessions_count = 0;

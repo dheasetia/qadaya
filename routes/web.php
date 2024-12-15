@@ -4,6 +4,7 @@ use App\Http\Controllers\ApiController;
 use App\Http\Controllers\IssueController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 
@@ -24,6 +25,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+Route::group(['prefix' => '/reports', 'middleware' => ['auth', 'verified']], function () {
+    Route::get('/', [ReportController::class, 'index'])->name('reports.index');
+    Route::post('/', [ReportController::class, 'reports_query'])->name('reports.query');
 });
 
 Route::group(['prefix' => 'issues', 'middleware' => ['auth', 'verified']], function () {
