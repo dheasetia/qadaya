@@ -60,7 +60,6 @@
             const loader = document.getElementById('generate-pdf-loader');
             const button = document.getElementById('btn-generate-pdf');
 
-            const csrf_string = "<?php echo csrf_token() ?>";
             const url = "<?php echo(url('api/generate-pdf')) ?>"
             try {
                 loader.classList.remove('d-none');

@@ -28,7 +28,7 @@ Route::middleware('auth')->group(function () {
 });
 Route::group(['prefix' => '/reports', 'middleware' => ['auth', 'verified']], function () {
     Route::get('/', [ReportController::class, 'index'])->name('reports.index');
-    Route::post('/', [ReportController::class, 'reports_query'])->name('reports.query');
+    Route::post('/', [ReportController::class, 'generate_excel'])->name('reports.query');
 });
 
 Route::group(['prefix' => 'issues', 'middleware' => ['auth', 'verified']], function () {
@@ -49,6 +49,7 @@ Route::group(['prefix' => 'issues', 'middleware' => ['auth', 'verified']], funct
 
 Route::group(['prefix' => 'api', 'middleware' => ['auth', 'verified']], function () {
     Route::post('generate-pdf', [ApiController::class, 'generate_pdf'])->name('pages.generate-pdf');
+    Route::post('generate-excel', [ApiController::class, 'generate_excel'])->name('api.generate-excel');
 });
 
 require __DIR__.'/auth.php';

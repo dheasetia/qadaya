@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\IssueExport;
 use App\Models\Issue;
 use App\Models\IssueFile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Maatwebsite\Excel\Facades\Excel;
+use PhpParser\Node\Stmt\Return_;
 use Spatie\Browsershot\Browsershot;
 
 class ApiController extends Controller

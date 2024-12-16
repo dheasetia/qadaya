@@ -1,76 +1,22 @@
 @php use App\Classes\Helper;use App\Enums\Category; @endphp
 @extends('layouts.app')
 @section('plugin_styles')
-    <link href="{{asset('src/plugins/src/apex/apexcharts.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{asset('src/assets/css/light/components/list-group.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{asset('src/assets/css/light/dashboard/dash_2.css')}}" rel="stylesheet" type="text/css"/>
 
-    <link href="{{asset('src/assets/css/dark/components/list-group.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{asset('src/assets/css/dark/dashboard/dash_2.css')}}" rel="stylesheet" type="text/css"/>
 @endsection
 @section('custom_styles')
     <style>
-        /*body.dark {*/
-        /*    background: white;*/
-        /*    color: black;*/
-        /*}*/
-        .report-page {
-            max-width: 800px;
-            justify-content: center;
-            align-items: center;
-            margin-right: auto;
-            margin-left: auto;
+        .widget {
+            border: none!important;
+            background: none!important;
+        }
+        .widget-header {
+            padding-top: 30px!important;
+            padding-right: 20px!important;
+        }
+        .widget-header h4{
+            font-family: "Noto Kufi Arabic", sans-serif;
         }
 
-        span.badge {
-            min-width: 80px;
-        }
-
-        .progress {
-            height: 20px !important;
-            position: relative;
-        }
-
-        @media print {
-            .card {
-                display: none;
-            }
-
-            svg {
-                stroke: black;
-            }
-
-            body.dark .progress .progress-bar {
-                background: black !important;
-                display: block;
-            }
-
-            .progress {
-                position: relative;
-            }
-
-            .progress:before {
-                display: block;
-                content: '';
-                position: absolute;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                z-index: 0;
-                border-bottom: 20px solid #eeeeee;
-                color: white;
-            }
-
-            .progress-bar {
-                position: absolute;
-                top: 0;
-                bottom: 0;
-                z-index: 1;
-                border-bottom: 20px solid #337ab7;
-                border-bottom-color: black;
-                color: white;
-            }
-        }
     </style>
 @endsection
 
@@ -93,7 +39,7 @@
                 </div>
             </div>
             <div class="widget-content widget-content-area">
-                <form class="row g-3 align-items-center" method="post" action="{{route('reports.query')}}">
+                <form class="row g-3 align-items-center" method="post" action="{{route('reports.query')}}" id="form-report">
                     @csrf
                     <div class="col-md-5">
                         <div class="form-group mb-4">
@@ -118,7 +64,10 @@
                         </div>
                     </div>
                     <div class="col-md-2 pt-2">
-                        <button type="submit" class="mt-4 mb-4 btn btn-primary btn-lg">توليد ملف أكسل</button>
+                        <button type="submit" id="submit-button" class="mt-4 mb-4 btn btn-primary btn-lg">
+                            <span id="regenerate-excel-loader" class="d-none"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-loader spin me-2"><line x1="12" y1="2" x2="12" y2="6"></line><line x1="12" y1="18" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="6" y2="12"></line><line x1="18" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line></svg></span>
+                            توليد ملف أكسل
+                        </button>
                     </div>
                 </form>
             </div>
@@ -127,16 +76,62 @@
 @endsection
 
 @section('plugin_scripts')
-    <script src="{{asset('src/plugins/src/apex/apexcharts.min.js')}}"></script>
+
 @endsection
 
-@section('custom_scripts')
-    <script>
-        const formOffice = document.getElementById('formOffice');
-        const selectOffice = document.getElementById('office');
-        selectOffice.addEventListener('change', function (evt) {
-            formOffice.submit();
-        });
-    </script>
-@endsection
+{{--@section('custom_scripts')--}}
+{{--    <script>--}}
+{{--        function serialize (data) {--}}
+{{--            let obj = {};--}}
+{{--            for (let [key, value] of data) {--}}
+{{--                if (obj[key] !== undefined) {--}}
+{{--                    if (!Array.isArray(obj[key])) {--}}
+{{--                        obj[key] = [obj[key]];--}}
+{{--                    }--}}
+{{--                    obj[key].push(value);--}}
+{{--                } else {--}}
+{{--                    obj[key] = value;--}}
+{{--                }--}}
+{{--            }--}}
+{{--            return obj;--}}
+{{--        }--}}
+
+{{--        const formReport = document.getElementById('form-report');--}}
+
+{{--        formReport.addEventListener('submit', async function(e) {--}}
+{{--            e.preventDefault();--}}
+{{--            const loader = document.getElementById('regenerate-excel-loader');--}}
+{{--            const button = document.getElementById('submit-button');--}}
+{{--            const data = new FormData(formReport);--}}
+{{--            const payload = serialize(data);--}}
+{{--            const url = "{{route('api.generate-excel')}}";--}}
+{{--            try {--}}
+{{--                loader.classList.remove('d-none');--}}
+{{--                button.classList.add('disabled');--}}
+{{--                const response = await fetch(url, {--}}
+{{--                    headers: {--}}
+{{--                        "Content-Type": "application/json",--}}
+{{--                        "Accept": "application/json",--}}
+{{--                        "X-Requested-With": "XMLHttpRequest",--}}
+{{--                        "X-CSRF-Token": "{{csrf_token()}}"--}}
+{{--                    },--}}
+{{--                    body: JSON.stringify(payload),--}}
+{{--                    method: "POST",--}}
+{{--                    credentials: "same-origin"--}}
+{{--                });--}}
+{{--                if (!response.ok) {--}}
+{{--                    throw new Error(`Response Status: ${response.status}`);--}}
+{{--                }--}}
+{{--                const data = await response.json();--}}
+{{--                console.log(data);--}}
+{{--            } catch (error) {--}}
+{{--                console.log(error.message)--}}
+{{--            } finally {--}}
+{{--                loader.classList.add('d-none');--}}
+{{--                button.classList.remove('disabled');--}}
+{{--            }--}}
+{{--        })--}}
+
+{{--    </script>--}}
+{{--@endsection--}}
 
