@@ -7,6 +7,7 @@ use App\Models\Issue;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\FromQuery;
+use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithColumnFormatting;
 use Maatwebsite\Excel\Concerns\WithEvents;
@@ -19,7 +20,7 @@ use PhpOffice\PhpSpreadsheet\Style\Alignment;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class IssueExport implements FromQuery, WithMapping, WithHeadings, WithColumnFormatting, ShouldAutoSize, WithStyles, WithTitle, WithEvents
+class IssueExport implements FromQuery, WithMapping, WithHeadings, WithTitle, WithEvents, WithColumnFormatting, ShouldAutoSize
 {
     use Exportable;
 
@@ -94,7 +95,7 @@ class IssueExport implements FromQuery, WithMapping, WithHeadings, WithColumnFor
     public function columnFormats(): array
     {
         return [
-            'B' => NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1
+            'C' => NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1
         ];
     }
 
@@ -127,4 +128,12 @@ class IssueExport implements FromQuery, WithMapping, WithHeadings, WithColumnFor
             }
         ];
     }
+
+//    public function view(): \Illuminate\Contracts\View\View
+//    {
+//        return view('reports.excel.issues_excel_template', [
+//            'issues' => Issue::all(),
+//            'office' => $this->office,
+//        ]);
+//    }
 }

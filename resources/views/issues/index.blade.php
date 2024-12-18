@@ -58,7 +58,7 @@
                             <td>{{$issue->issue_number}}</td>
                             <td>{{$issue->issue_date}}</td>
                             <td>{!! $issue->age > 180 ? '<span class="badge outline-badge-danger">' . $issue->age . '</span>' : '<span class=" badge outline-badge-success">' . $issue->age . '</span>' !!}</td>
-                            <td>{!! $issue->has_future_appointment > 'لا' ? '<span class="badge outline-badge-success">' . $issue->has_future_appointment . '</span>' : '<span class=" badge outline-badge-danger">' . $issue->has_future_appointment . '</span>' !!}</td>
+                            <td>{!! $issue->has_future_appointment == 'لا' ? '<span class="badge outline-badge-danger">' . $issue->has_future_appointment . '</span>' : '<span class=" badge outline-badge-success">' . $issue->has_future_appointment . '</span>' !!}</td>
                             <td>{{$issue->status}}</td>
                             <td>{!! $issue->money_claimed > 50000 ? '<span class="shadow-none badge badge-danger">' . number_format($issue->money_claimed, 0, '', ',') . '</span>' : '<span class="shadow-none badge badge-success">' . number_format($issue->money_claimed, 0, '', ',') . '</span>'!!}</td>
                             <td>{!! $issue->sessions > 5 ? '<span class="shadow-none badge badge-danger">' . $issue->sessions . '</span>' :   '<span class="shadow-none badge badge-success">' . $issue->sessions . '</span>'!!}</td>
