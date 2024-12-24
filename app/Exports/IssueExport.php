@@ -148,12 +148,20 @@ class IssueExport implements FromQuery, WithMapping, WithHeadings, WithTitle, Wi
                     $value = $event->sheet->getDelegate()->getCell('B' . $i)->getValue();
                     if ($value > 50000) {
                         $event->sheet->getDelegate()->getStyle('B' . $i)->getFill()->setFillType(Fill::FILL_SOLID);
-                        $event->sheet->getDelegate()->getStyle('B' . $i)->getFill()->getStartColor()->setARGB('fa6e7e');
-                        $event->sheet->getDelegate()->getStyle('B' . $i)->getFont()->getColor()->setARGB('d11b2d');
+                        $event->sheet->getDelegate()->getStyle('B' . $i)->getFill()->getStartColor()->setARGB('bebfbf');
+                        $event->sheet->getDelegate()->getStyle('B' . $i)->getFont()->getColor()->setARGB('454646');
                     } else {
-                        $event->sheet->getDelegate()->getStyle('B' . $i)->getFill()->setFillType(Fill::FILL_SOLID);
-                        $event->sheet->getDelegate()->getStyle('B' . $i)->getFill()->getStartColor()->setARGB('b0ffe2');
-                        $event->sheet->getDelegate()->getStyle('B' . $i)->getFont()->getColor()->setARGB('0d9e53');
+                        $age = $event->sheet->getDelegate()->getCell('E' . $i)->getValue();
+                        if ($age > 90) {
+                            $event->sheet->getDelegate()->getStyle('B' . $i)->getFill()->setFillType(Fill::FILL_SOLID);
+                            $event->sheet->getDelegate()->getStyle('B' . $i)->getFill()->getStartColor()->setARGB('fa6e7e');
+                            $event->sheet->getDelegate()->getStyle('B' . $i)->getFont()->getColor()->setARGB('d11b2d');
+                        } else {
+                            $event->sheet->getDelegate()->getStyle('B' . $i)->getFill()->setFillType(Fill::FILL_SOLID);
+                            $event->sheet->getDelegate()->getStyle('B' . $i)->getFill()->getStartColor()->setARGB('b0ffe2');
+                            $event->sheet->getDelegate()->getStyle('B' . $i)->getFont()->getColor()->setARGB('0d9e53');
+                        }
+
                     }
 
                     //future appointment
@@ -172,11 +180,14 @@ class IssueExport implements FromQuery, WithMapping, WithHeadings, WithTitle, Wi
 
                     // five sessions
                     $appointment_value = $event->sheet->getDelegate()->getCell('D' . $i)->getValue();
-                    if ($appointment_value > 5) {
+                    if ($appointment_value <= 3) {
                         $event->sheet->getDelegate()->getStyle('D' . $i)->getFill()->setFillType(Fill::FILL_SOLID);
-                        $event->sheet->getDelegate()->getStyle('D' . $i)->getFill()->getStartColor()->setARGB('fa6e7e');
-                        $event->sheet->getDelegate()->getStyle('D' . $i)->getFont()->getColor()->setARGB('d11b2d');
-
+                        $event->sheet->getDelegate()->getStyle('D' . $i)->getFill()->getStartColor()->setARGB('b0ffe2');
+                        $event->sheet->getDelegate()->getStyle('D' . $i)->getFont()->getColor()->setARGB('0d9e53');
+                    } elseif ($appointment_value = 4) {
+                        $event->sheet->getDelegate()->getStyle('D' . $i)->getFill()->setFillType(Fill::FILL_SOLID);
+                        $event->sheet->getDelegate()->getStyle('D' . $i)->getFill()->getStartColor()->setARGB('FFA500');
+                        $event->sheet->getDelegate()->getStyle('D' . $i)->getFont()->getColor()->setARGB('AE6D06');
                     } else {
                         $event->sheet->getDelegate()->getStyle('D' . $i)->getFill()->setFillType(Fill::FILL_SOLID);
                         $event->sheet->getDelegate()->getStyle('D' . $i)->getFill()->getStartColor()->setARGB('b0ffe2');
@@ -186,23 +197,119 @@ class IssueExport implements FromQuery, WithMapping, WithHeadings, WithTitle, Wi
 
                     // age
                     $age_value = $event->sheet->getDelegate()->getCell('E' . $i)->getValue();
-                    if ($appointment_value > 180) {
+                    if ($appointment_value <= 150) {
+                        $event->sheet->getDelegate()->getStyle('E' . $i)->getFill()->setFillType(Fill::FILL_SOLID);
+                        $event->sheet->getDelegate()->getStyle('E' . $i)->getFill()->getStartColor()->setARGB('b0ffe2');
+                        $event->sheet->getDelegate()->getStyle('E' . $i)->getFont()->getColor()->setARGB('0d9e53');
+                    } elseif ($appointment_value <= 179) {
+                        $event->sheet->getDelegate()->getStyle('E' . $i)->getFill()->setFillType(Fill::FILL_SOLID);
+                        $event->sheet->getDelegate()->getStyle('E' . $i)->getFill()->getStartColor()->setARGB('FFA500');
+                        $event->sheet->getDelegate()->getStyle('E' . $i)->getFont()->getColor()->setARGB('AE6D06');
+                    } else {
                         $event->sheet->getDelegate()->getStyle('E' . $i)->getFill()->setFillType(Fill::FILL_SOLID);
                         $event->sheet->getDelegate()->getStyle('E' . $i)->getFill()->getStartColor()->setARGB('fa6e7e');
                         $event->sheet->getDelegate()->getStyle('E' . $i)->getFont()->getColor()->setARGB('d11b2d');
 
-                    } else {
-                        $event->sheet->getDelegate()->getStyle('E' . $i)->getFill()->setFillType(Fill::FILL_SOLID);
-                        $event->sheet->getDelegate()->getStyle('E' . $i)->getFill()->getStartColor()->setARGB('b0ffe2');
-                        $event->sheet->getDelegate()->getStyle('E' . $i)->getFont()->getColor()->setARGB('0d9e53');
-
                     }
 
                 }
-                $event->sheet->getDelegate()->setCellValue('B' . $row_count + 2, 'فضية غير يسيرة');
-                $event->sheet->getDelegate()->setCellValue('B' . $row_count + 3, 'فضية يسيرة متعفرة');
-                $event->sheet->getDelegate()->setCellValue('B' . $row_count + 4, 'فضية يسيرة غير متعثرة');
-            }
+                /*
+                 * todo: buat kolom:
+                 * إجمالي القضايا اليسيرة
+                 * إجمالي القضايا غير المتعثرة
+                 * إجمالي القضايا المتعثرة
+                 * إجمالي القضايا غير اليسيرة
+                 * إجمالي القضايا بالجلسات أقل من ٤ جلسات
+                 * إجمالي القضايا بأربع جلسات
+                 * إجمالي القضايا بأكثر من ٥ جلسات
+                 * إجمالي القضايا بعمرها ١٨٠ يوما فأقل
+                 * إجمالي القضايا بعمرها دأكثر من ١٨٠ يوما
+                 */
+                $row_count+=3;
+
+                $summary_cell_range = 'A' . $row_count . ':B' . $row_count + 12;
+                $event->sheet->getDelegate()->getStyle($summary_cell_range)->getBorders()->getAllBorders()->setBorderStyle(Border::BORDER_THIN);
+                $event->sheet->getDelegate()->getStyle($summary_cell_range)->getFont()->setSize(18);
+                $event->sheet->getDelegate()->getStyle('A' . $row_count)->getalignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+                $event->sheet->getDelegate()->getStyle('A' . $row_count)->getFont()->setBold(true);
+                $event->sheet->getDelegate()->getStyle('A' . $row_count)->getFill()->setFillType(Fill::FILL_SOLID);
+                $event->sheet->getDelegate()->getStyle('A' . $row_count)->getFill()->getStartColor()->setARGB('dddddd');
+
+                $event->sheet->mergeCells('A' . $row_count . ':B' . $row_count);
+                $event->sheet->getDelegate()->setCellValue('A' . $row_count, 'الإجماليات');
+
+                $row_count++;
+                $event->sheet->getDelegate()->setCellValue('A' . $row_count, 'إجمالي القضايا اليسيرة');
+                $event->sheet->getDelegate()->setCellValue('B' . $row_count, $this->query()->where('money_claimed' , '<=', 50000)->count());
+
+                $row_count++;
+                $event->sheet->getDelegate()->setCellValue('A' . $row_count, 'إجمالي القضايا اليسيرة غير المتعثرة');
+                $event->sheet->getDelegate()->setCellValue('B' . $row_count, $this->query()->where('money_claimed' , '<=', 50000)->where('age', '<=', 90)->count());
+                $event->sheet->getDelegate()->getStyle('A' . $row_count . ':B' . $row_count)->getFill()->setFillType(Fill::FILL_SOLID);
+                $event->sheet->getDelegate()->getStyle('A' . $row_count . ':B' . $row_count)->getFill()->getStartColor()->setARGB('b0ffe2');
+                $event->sheet->getDelegate()->getStyle('A' . $row_count . ':B' . $row_count)->getFont()->getColor()->setARGB('0d9e53');
+
+                $row_count++;
+                $event->sheet->getDelegate()->setCellValue('A' . $row_count, 'إجمالي القضايا اليسيرة المتعثرة');
+                $event->sheet->getDelegate()->setCellValue('B' . $row_count, $this->query()->where('money_claimed' , '<=', 50000)->where('age', '>', 90)->count());
+                $event->sheet->getDelegate()->getStyle('A' . $row_count . ':B' . $row_count)->getFill()->setFillType(Fill::FILL_SOLID);
+                $event->sheet->getDelegate()->getStyle('A' . $row_count . ':B' . $row_count)->getFill()->getStartColor()->setARGB('fa6e7e');
+                $event->sheet->getDelegate()->getStyle('A' . $row_count . ':B' . $row_count)->getFont()->getColor()->setARGB('d11b2d');
+
+                $row_count++;
+                $event->sheet->getDelegate()->setCellValue('A' . $row_count, 'إجمالي القضايا غير اليسيرة');
+                $event->sheet->getDelegate()->setCellValue('B' . $row_count, $this->query()->where('money_claimed' , '>', 50000)->count());
+                $event->sheet->getDelegate()->getStyle('A'. $row_count . ':B' . $row_count)->getFill()->setFillType(Fill::FILL_SOLID);
+                $event->sheet->getDelegate()->getStyle('A'. $row_count . ':B' . $row_count)->getFill()->getStartColor()->setARGB('bebfbf');
+                $event->sheet->getDelegate()->getStyle('A'. $row_count . ':B' . $row_count)->getFont()->getColor()->setARGB('454646');
+
+                $row_count+=2;
+                $event->sheet->getDelegate()->setCellValue('A' . $row_count, 'إجمالي القضايا بأقل من أربع جلسات');
+                $event->sheet->getDelegate()->setCellValue('B' . $row_count, $this->query()->where('sessions' , '<', 4)->count());
+                $event->sheet->getDelegate()->getStyle('A' . $row_count  . ':B' . $row_count)->getFill()->setFillType(Fill::FILL_SOLID);
+                $event->sheet->getDelegate()->getStyle('A' . $row_count  . ':B' . $row_count)->getFill()->getStartColor()->setARGB('b0ffe2');
+                $event->sheet->getDelegate()->getStyle('A' . $row_count  . ':B' . $row_count)->getFont()->getColor()->setARGB('0d9e53');
+
+                $row_count++;
+                $event->sheet->getDelegate()->setCellValue('A' . $row_count, 'إجمالي القضايا  بأربع جلسات');
+                $event->sheet->getDelegate()->setCellValue('B' . $row_count, $this->query()->where('sessions' , '=', 4)->count());
+                $event->sheet->getDelegate()->getStyle('A' . $row_count . ':B' . $row_count)->getFill()->setFillType(Fill::FILL_SOLID);
+                $event->sheet->getDelegate()->getStyle('A' . $row_count . ':B' . $row_count)->getFill()->getStartColor()->setARGB('FFA500');
+                $event->sheet->getDelegate()->getStyle('A' . $row_count . ':B' . $row_count)->getFont()->getColor()->setARGB('AE6D06');
+
+
+                $row_count++;
+                $event->sheet->getDelegate()->setCellValue('A' . $row_count, 'إجمالي القضايا  بخمس جلسات فأكثر');
+                $event->sheet->getDelegate()->setCellValue('B' . $row_count, $this->query()->where('sessions' , '>', 4)->count());
+                $event->sheet->getDelegate()->getStyle('A' . $row_count . ':B' . $row_count)->getFill()->setFillType(Fill::FILL_SOLID);
+                $event->sheet->getDelegate()->getStyle('A' . $row_count . ':B' . $row_count)->getFill()->getStartColor()->setARGB('b0ffe2');
+                $event->sheet->getDelegate()->getStyle('A' . $row_count . ':B' . $row_count)->getFont()->getColor()->setARGB('0d9e53');
+
+                $row_count+=2;
+                $event->sheet->getDelegate()->setCellValue('A' . $row_count, 'إجمالي القضايا عمرها 150 يوما فأقل');
+                $event->sheet->getDelegate()->setCellValue('B' . $row_count, $this->query()->where('age' , '<=', 150)->count());
+                $event->sheet->getDelegate()->getStyle('A'. $row_count . ':B' . $row_count)->getFill()->setFillType(Fill::FILL_SOLID);
+                $event->sheet->getDelegate()->getStyle('A'. $row_count . ':B' . $row_count)->getFill()->getStartColor()->setARGB('b0ffe2');
+                $event->sheet->getDelegate()->getStyle('A'. $row_count . ':B' . $row_count)->getFont()->getColor()->setARGB('0d9e53');
+
+                $row_count++;
+                $event->sheet->getDelegate()->setCellValue('A' . $row_count, 'إجمالي القضايا عمرها بين 151 إلى 179 يوما');
+                $event->sheet->getDelegate()->setCellValue('B' . $row_count, $this->query()->whereBetween('age' , [151, 179] )->count());
+                $event->sheet->getDelegate()->getStyle('A' . $row_count . ':B' . $row_count)->getFill()->setFillType(Fill::FILL_SOLID);
+                $event->sheet->getDelegate()->getStyle('A' . $row_count . ':B' . $row_count)->getFill()->getStartColor()->setARGB('FFA500');
+                $event->sheet->getDelegate()->getStyle('A' . $row_count . ':B' . $row_count)->getFont()->getColor()->setARGB('AE6D06');
+
+
+
+                $row_count++;
+                $event->sheet->getDelegate()->setCellValue('A' . $row_count, 'إجمالي القضايا عمرها ١٨٠ يوما فأكثر');
+                $event->sheet->getDelegate()->setCellValue('B' . $row_count, $this->query()->where('age' , '>=', 180)->count());
+                $event->sheet->getDelegate()->getStyle('A' . $row_count . ':B' . $row_count)->getFill()->setFillType(Fill::FILL_SOLID);
+                $event->sheet->getDelegate()->getStyle('A' . $row_count . ':B' . $row_count)->getFill()->getStartColor()->setARGB('fa6e7e');
+                $event->sheet->getDelegate()->getStyle('A' . $row_count . ':B' . $row_count)->getFont()->getColor()->setARGB('d11b2d');
+
+
+        }
         ];
     }
     public function drawings()
@@ -211,28 +318,28 @@ class IssueExport implements FromQuery, WithMapping, WithHeadings, WithTitle, Wi
         $count = 2;
 
         foreach ($this->query()->get() as $row) {
-            if ($row->money_claimed > 50000) {
+            if ($row->age <= 150) {
                 $drawing = new Drawing();
-                $drawing->setPath(public_path('src/assets/img/close.png'));
+                $drawing->setPath(public_path('src/assets/img/yes.png'));
                 $drawing->setHeight(25);
-                $drawing->setCoordinates('B' . $count);
+                $drawing->setCoordinates('E' . $count);
                 $drawing->setOffsetX(220);
                 $drawing->setOffsetY(5);
                 $my_drawings[] = $drawing;
             } else {
-                if ($row->age > 90) {
+                if ($row->age <= 179) {
                     $drawing = new Drawing();
                     $drawing->setPath(public_path('src/assets/img/warning.png'));
                     $drawing->setHeight(25);
-                    $drawing->setCoordinates('B' . $count);
+                    $drawing->setCoordinates('E' . $count);
                     $drawing->setOffsetX(220);
                     $drawing->setOffsetY(5);
                     $my_drawings[] = $drawing;
                 } else {
                     $drawing = new Drawing();
-                    $drawing->setPath(public_path('src/assets/img/yes.png'));
+                    $drawing->setPath(public_path('src/assets/img/close.png'));
                     $drawing->setHeight(25);
-                    $drawing->setCoordinates('B' . $count);
+                    $drawing->setCoordinates('E' . $count);
                     $drawing->setOffsetX(220);
                     $drawing->setOffsetY(5);
                     $my_drawings[] = $drawing;
@@ -242,10 +349,11 @@ class IssueExport implements FromQuery, WithMapping, WithHeadings, WithTitle, Wi
         }
 
 
+        $count+=11;
         $drawing_close = new Drawing();
-        $drawing_close->setPath(public_path('src/assets/img/close.png'));
+        $drawing_close->setPath(public_path('src/assets/img/yes.png'));
         $drawing_close->setHeight(25);
-        $drawing_close->setCoordinates('A' . $count);
+        $drawing_close->setCoordinates('B' . $count);
         $drawing_close->setOffsetX(180);
         $drawing_close->setOffsetY(5);
         $my_drawings[] = $drawing_close;
@@ -254,21 +362,19 @@ class IssueExport implements FromQuery, WithMapping, WithHeadings, WithTitle, Wi
         $drawing_warning = new Drawing();
         $drawing_warning->setPath(public_path('src/assets/img/warning.png'));
         $drawing_warning->setHeight(25);
-        $drawing_warning->setCoordinates('A' . $count);
+        $drawing_warning->setCoordinates('B' . $count);
         $drawing_warning->setOffsetX(180);
         $drawing_warning->setOffsetY(5);
         $my_drawings[] = $drawing_warning;
         $count++;
 
         $drawing_yes = new Drawing();
-        $drawing_yes->setPath(public_path('src/assets/img/yes.png'));
+        $drawing_yes->setPath(public_path('src/assets/img/close.png'));
         $drawing_yes->setHeight(25);
-        $drawing_yes->setCoordinates('A' . $count);
+        $drawing_yes->setCoordinates('B' . $count);
         $drawing_yes->setOffsetX(180);
         $drawing_yes->setOffsetY(5);
         $my_drawings[] = $drawing_yes;
-
-
 
         return $my_drawings;
     }

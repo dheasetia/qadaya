@@ -45,7 +45,6 @@
                         <div class="form-group mb-4">
                             <label for="office">اسم الدائرة</label>
                             <select class="form-select" name="office" id="office">
-                                <option value="">اختر اسم الدائرة</option>
                                 @foreach($offices as $office)
                                     <option value="{{$office}}">{{$office}}</option>
                                 @endforeach
@@ -56,7 +55,6 @@
                         <div class="form-group mb-4">
                             <label for="category">تصنيف القضية</label>
                             <select class="form-select" id="category" name="category">
-                                <option value="">اختر تصنيف القضية</option>
                                 @foreach($categories as $category)
                                     <option value="{{$category}}">{{$category}}</option>
                                 @endforeach
