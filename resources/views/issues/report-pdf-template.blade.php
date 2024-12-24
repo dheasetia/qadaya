@@ -372,9 +372,10 @@
                 <br>
                 <br>
                 <br>
+                <br>
 
                 @if($issues->count() > 57)
-                    <table class="table table-bordered" style="margin-top: 10px">
+                    <table class="table table-bordered" style="margin-top: 20px">
                         <tbody>
                         <tr class="text-center" style="font-weight: bold; background-color: darkgreen; color: white; font-family: 'Noto Kufi Arabic', sans-serif";>
                             <td style="width: 10px">رقم</td>
@@ -420,9 +421,10 @@
                     <br>
                     <br>
                     <br>
+                    <br>
 
                     @if($issues->count() > 79)
-                        <table class="table table-bordered" style="margin-top: 10px">
+                        <table class="table table-bordered" style="margin-top: 20px">
                             <tbody>
                             <tr class="text-center" style="font-weight: bold; background-color: darkgreen; color: white; font-family: 'Noto Kufi Arabic', sans-serif";>
                                 <td style="width: 10px">رقم</td>
@@ -468,9 +470,10 @@
                     <br>
                     <br>
                     <br>
+                    <br>
 
                     @if($issues->count() > 101)
-                        <table class="table table-bordered" style="margin-top: 10px">
+                        <table class="table table-bordered" style="margin-top: 20px">
                             <tbody>
                             <tr class="text-center" style="font-weight: bold; background-color: darkgreen; color: white; font-family: 'Noto Kufi Arabic', sans-serif";>
                                 <td style="width: 10px">رقم</td>
@@ -511,6 +514,7 @@
                         </table>
                     @endif
 
+                    <br>
                     <br>
                     <br>
                     <br>
