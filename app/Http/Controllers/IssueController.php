@@ -118,8 +118,6 @@ class IssueController extends Controller
             $total_warning = $easy_issues_count + $no_next_appointment_count + $five_sessions_count + $old_issues_count;
 
         }
-//        return $issues_data;
-
         return view('issues.report', compact('current_office', 'offices', 'issues', 'easy_issues_count', 'easy_issues_late_count', 'easy_issues_not_late_count', 'no_next_appointment_count', 'five_sessions_count', 'old_issues_count', 'total_warning'));
     }
 
