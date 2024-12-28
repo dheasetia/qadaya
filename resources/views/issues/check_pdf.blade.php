@@ -257,7 +257,7 @@
                         <td colspan="6">لا توجد بيانات، الرجاء اختر اسم الدائرة</td>
                     </tr>
                 @else
-                    @for ($i = 1 ; $i <= 17 ; $i++)
+                    @for ($i = 1 ; $i <= 14 ; $i++)
                         @if ($issues->count() >= $i)
                             <tr>
                                 <td>{{$i}}</td>
@@ -284,8 +284,9 @@
             </table>
 
             @if ($issues != null)
-                @if($issues->count() > 17)
+                @if($issues->count() > 14)
                     <br/>
+                    <br>
                     <br>
                     <br>
                     <table class="table table-bordered">
@@ -300,9 +301,9 @@
                             <td>عدد الجلسات</td>
                             <td>الأيام منذ القيد</td>
                         </tr>
-                        @if ($issues->count() >= 41)
+                        @if ($issues->count() >= 35)
                             @if ($issues->count() >= $i)
-                                @for ($i = 18 ; $i <= 41 ; $i++)
+                                @for ($i = 15 ; $i <= 35 ; $i++)
                                     <tr>
                                         <td>{{$i}}</td>
                                         <td>{{$issues[$i-1]->issue_number}}</td>
@@ -315,7 +316,7 @@
                             @endif
 
                         @else
-                            @for ($i = 18 ; $i <= $issues->count() ; $i++)
+                            @for ($i = 15 ; $i <= $issues->count() ; $i++)
                                 <tr>
                                     <td>{{$i}}</td>
                                     <td>{{$issues[$i-1]->issue_number}}</td>
@@ -331,11 +332,14 @@
                 @endif
 
 
-                @if($issues->count() > 41)
-                    <br>
-                    <br>
-                    <br>
-                    <br>
+                @if($issues->count() > 35)
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
                     <table class="table table-bordered" style="margin-top: 20px">
                         <tbody>
                         <tr class="text-center" style="font-weight: bold; background-color: darkgreen; color: white; font-family: 'Noto Kufi Arabic', sans-serif";>
@@ -348,9 +352,9 @@
                             <td>عدد الجلسات</td>
                             <td>الأيام منذ القيد</td>
                         </tr>
-                        @if ($issues->count() > 67)
+                        @if ($issues->count() > 57)
                             @if ($issues->count() >= $i)
-                                @for ($i = 42 ; $i <= 67 ; $i++)
+                                @for ($i = 36 ; $i <= 57 ; $i++)
                                     <tr>
                                         <td>{{$i}}</td>
                                         <td>{{$issues[$i-1]->issue_number}}</td>
@@ -362,7 +366,7 @@
                                 @endfor
                             @endif
                         @else
-                            @for ($i = 42 ; $i <= $issues->count() ; $i++)
+                            @for ($i = 36 ; $i <= $issues->count() ; $i++)
                                 @if ($issues->count() >= $i)
                                     <tr>
                                         <td>{{$i}}</td>
@@ -380,10 +384,13 @@
                 @endif
 
 
-                @if($issues->count() > 67)
-                    <br>
-                    <br>
-                    <br>
+                @if($issues->count() > 57)
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
                     <table class="table table-bordered" style="margin-top: 20px">
                         <tbody>
                         <tr class="text-center" style="font-weight: bold; background-color: darkgreen; color: white; font-family: 'Noto Kufi Arabic', sans-serif";>
@@ -396,9 +403,9 @@
                             <td>عدد الجلسات</td>
                             <td>الأيام منذ القيد</td>
                         </tr>
-                        @if ($issues->count() > 93)
+                        @if ($issues->count() > 79)
                             @if ($issues->count() >= $i)
-                                @for ($i = 68 ; $i <= 91 ; $i++)
+                                @for ($i = 58 ; $i <= 79 ; $i++)
                                     <tr>
                                         <td>{{$i}}</td>
                                         <td>{{$issues[$i-1]->issue_number}}</td>
@@ -410,7 +417,7 @@
                                 @endfor
                             @endif
                         @else
-                            @for ($i = 68 ; $i <= $issues->count() ; $i++)
+                            @for ($i = 58 ; $i <= $issues->count() ; $i++)
                                 <tr>
                                     <td>{{$i}}</td>
                                     <td>{{$issues[$i-1]->issue_number}}</td>
@@ -426,11 +433,13 @@
                 @endif
 
 
-                @if($issues->count() > 91)
-                    <br>
-                    <br>
-                    <br>
-                    <br>
+                @if($issues->count() > 79)
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
                     <table class="table table-bordered" style="margin-top: 20px">
                         <tbody>
                         <tr class="text-center" style="font-weight: bold; background-color: darkgreen; color: white; font-family: 'Noto Kufi Arabic', sans-serif";>
@@ -443,9 +452,9 @@
                             <td>عدد الجلسات</td>
                             <td>الأيام منذ القيد</td>
                         </tr>
-                        @if ($issues->count() > 113)
+                        @if ($issues->count() > 101)
                             @if ($issues->count() >= $i)
-                                @for ($i = 92 ; $i <= 113 ; $i++)
+                                @for ($i = 80 ; $i <= 101 ; $i++)
                                     <tr>
                                         <td>{{$i}}</td>
                                         <td>{{$issues[$i-1]->issue_number}}</td>
@@ -457,55 +466,7 @@
                                 @endfor
                             @endif
                         @else
-                            @for ($i = 92 ; $i <= $issues->count() ; $i++)
-                                <tr>
-                                    <td>{{$i}}</td>
-                                    <td>{{$issues[$i-1]->issue_number}}</td>
-                                    {!! Helper::render_easy_status($issues[$i-1]) !!}
-                                    {!! Helper::render_appointment($issues[$i-1]->has_future_appointment) !!}
-                                    {!! Helper::render_session($issues[$i-1]->sessions) !!}
-                                    {!! Helper::render_age($issues[$i-1]->age) !!}
-                                </tr>
-                            @endfor
-                        @endif
-                        </tbody>
-                    </table>
-                @endif
-
-
-
-                @if($issues->count() > 113)
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <table class="table table-bordered" style="margin-top: 20px">
-                        <tbody>
-                        <tr class="text-center" style="font-weight: bold; background-color: darkgreen; color: white; font-family: 'Noto Kufi Arabic', sans-serif";>
-                            <td style="width: 10px">رقم</td>
-                            <td>رقم القضية</td>
-                            <td>
-                                <p>مبلغ المطالبة</p>
-                            </td>
-                            <td>لها موعد قادم</td>
-                            <td>عدد الجلسات</td>
-                            <td>الأيام منذ القيد</td>
-                        </tr>
-                        @if ($issues->count() > 127)
-                            @if ($issues->count() >= $i)
-                                @for ($i = 114 ; $i <= 127 ; $i++)
-                                    <tr>
-                                        <td>{{$i}}</td>
-                                        <td>{{$issues[$i-1]->issue_number}}</td>
-                                        {!! Helper::render_easy_status($issues[$i-1]) !!}
-                                        {!! Helper::render_appointment($issues[$i-1]->has_future_appointment) !!}
-                                        {!! Helper::render_session($issues[$i-1]->sessions) !!}
-                                        {!! Helper::render_age($issues[$i-1]->age) !!}
-                                    </tr>
-                                @endfor
-                            @endif
-                        @else
-                            @for ($i = 114 ; $i <= $issues->count() ; $i++)
+                            @for ($i = 80 ; $i <= $issues->count() ; $i++)
                                 <tr>
                                     <td>{{$i}}</td>
                                     <td>{{$issues[$i-1]->issue_number}}</td>
@@ -522,11 +483,63 @@
 
 
 
-                @if($issues->count() > 127)
-                    <br>
-                    <br>
-                    <br>
-                    <br>
+                @if($issues->count() > 101)
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                    <table class="table table-bordered" style="margin-top: 20px">
+                        <tbody>
+                        <tr class="text-center" style="font-weight: bold; background-color: darkgreen; color: white; font-family: 'Noto Kufi Arabic', sans-serif";>
+                            <td style="width: 10px">رقم</td>
+                            <td>رقم القضية</td>
+                            <td>
+                                <p>مبلغ المطالبة</p>
+                            </td>
+                            <td>لها موعد قادم</td>
+                            <td>عدد الجلسات</td>
+                            <td>الأيام منذ القيد</td>
+                        </tr>
+                        @if ($issues->count() > 122)
+                            @if ($issues->count() >= $i)
+                                @for ($i = 102 ; $i <= 122 ; $i++)
+                                    <tr>
+                                        <td>{{$i}}</td>
+                                        <td>{{$issues[$i-1]->issue_number}}</td>
+                                        {!! Helper::render_easy_status($issues[$i-1]) !!}
+                                        {!! Helper::render_appointment($issues[$i-1]->has_future_appointment) !!}
+                                        {!! Helper::render_session($issues[$i-1]->sessions) !!}
+                                        {!! Helper::render_age($issues[$i-1]->age) !!}
+                                    </tr>
+                                @endfor
+                            @endif
+                        @else
+                            @for ($i = 102 ; $i <= $issues->count() ; $i++)
+                                <tr>
+                                    <td>{{$i}}</td>
+                                    <td>{{$issues[$i-1]->issue_number}}</td>
+                                    {!! Helper::render_easy_status($issues[$i-1]) !!}
+                                    {!! Helper::render_appointment($issues[$i-1]->has_future_appointment) !!}
+                                    {!! Helper::render_session($issues[$i-1]->sessions) !!}
+                                    {!! Helper::render_age($issues[$i-1]->age) !!}
+                                </tr>
+                            @endfor
+                        @endif
+                        </tbody>
+                    </table>
+                @endif
+
+
+
+                @if($issues->count() > 122)
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
                     <table class="table table-bordered" style="margin-top: 10px">
                         <tbody>
                         <tr class="text-center" style="font-weight: bold; background-color: darkgreen; color: white; font-family: 'Noto Kufi Arabic', sans-serif";>
@@ -539,9 +552,9 @@
                             <td>عدد الجلسات</td>
                             <td>الأيام منذ القيد</td>
                         </tr>
-                        @if ($issues->count() > 149)
+                        @if ($issues->count() > 144)
                             @if ($issues->count() >= $i)
-                                @for ($i = 128 ; $i <= 149 ; $i++)
+                                @for ($i = 123 ; $i <= 144 ; $i++)
                                     <tr>
                                         <td>{{$i}}</td>
                                         <td>{{$issues[$i-1]->issue_number}}</td>
@@ -553,7 +566,7 @@
                                 @endfor
                             @endif
                         @else
-                            @for ($i = 128 ; $i <= $issues->count() ; $i++)
+                            @for ($i = 123 ; $i <= $issues->count() ; $i++)
                                 <tr>
                                     <td>{{$i}}</td>
                                     <td>{{$issues[$i-1]->issue_number}}</td>

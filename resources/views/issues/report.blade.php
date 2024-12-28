@@ -291,10 +291,10 @@
                     <tr>
                         <td class="td-row">{{$loop->iteration}}</td>
                         <td class="td-row">{{$issue->issue_number}}</td>
-                        <td class="td-row">{!!Helper::render_easy_status($issue)  !!}</td>
-                        <td class="td-row">{!! Helper::render_appointment($issue->has_future_appointment) !!}</td>
-                        <td class="td-row">{!! Helper::render_session($issue->sessions) !!}</td>
-                        <td class="td-row">{!! Helper::render_age($issue->age) !!}</td>
+                        {!!Helper::render_easy_status($issue)  !!}
+                        {!! Helper::render_appointment($issue->has_future_appointment) !!}
+                        {!! Helper::render_session($issue->sessions) !!}
+                        {!! Helper::render_age($issue->age) !!}
                     </tr>
                 @endforeach
             @endif
@@ -304,13 +304,13 @@
         <br>
         <br>
 
-        <div style="margin-top: 25px; padding: 10px; border-radius: 10px; border: #191E3A solid 1px;">
-            <ul>
-                <li> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#37AB55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-square"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>  قضية يسيرة غير متعثرة</li>
-                <li> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E7515A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-triangle"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg> قضية يسيرة متعثرة</li>
-                <li> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E3A140" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-square"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="9" x2="15" y2="15"></line><line x1="15" y1="9" x2="9" y2="15"></line></svg> قضية غير يسيرة</li>
-            </ul>
-        </div>
+{{--        <div style="margin-top: 25px; padding: 10px; border-radius: 10px; border: #191E3A solid 1px;">--}}
+{{--            <ul>--}}
+{{--                <li> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#37AB55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-square"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>  قضية يسيرة غير متعثرة</li>--}}
+{{--                <li> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E7515A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-triangle"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg> قضية يسيرة متعثرة</li>--}}
+{{--                <li> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E3A140" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-square"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="9" x2="15" y2="15"></line><line x1="15" y1="9" x2="9" y2="15"></line></svg> قضية غير يسيرة</li>--}}
+{{--            </ul>--}}
+{{--        </div>--}}
     </div>
 </div>
 @endsection

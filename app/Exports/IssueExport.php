@@ -290,8 +290,8 @@ class IssueExport implements FromQuery, WithMapping, WithHeadings, WithTitle, Wi
                 $row_count++;
                 $event->sheet->getDelegate()->setCellValue('E' . $row_count, '  خمس جلسات فأكثر: ' . Issue::where('office', $this->office)->where('sessions' , '>', 4)->count());
                 $event->sheet->getDelegate()->getStyle('E' . $row_count)->getFill()->setFillType(Fill::FILL_SOLID);
-                $event->sheet->getDelegate()->getStyle('E' . $row_count)->getFill()->getStartColor()->setARGB('b0ffe2');
-                $event->sheet->getDelegate()->getStyle('E' . $row_count)->getFont()->getColor()->setARGB('0d9e53');
+                $event->sheet->getDelegate()->getStyle('E' . $row_count)->getFill()->getStartColor()->setARGB('fa6e7e');
+                $event->sheet->getDelegate()->getStyle('E' . $row_count)->getFont()->getColor()->setARGB('d11b2d');
 
                 $row_count-=2;
                 $event->sheet->getDelegate()->setCellValue('F' . $row_count, ' عمرها ١٥٠ يوما فأقل: ' . Issue::where('office', $this->office)->where('age' , '<=', 150)->count());

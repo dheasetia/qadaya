@@ -17,7 +17,7 @@ Route::get('/abah', function () {
     return view('check');
 });
 
-
+Route::get('check_pdf', [APIController::class, 'check_pdf']);
 Route::get('/', function () {
     return redirect('issues');
 })->name('dashboard');
