@@ -13,7 +13,6 @@ class ReportController extends Controller
 {
     public function index(Request $request)
     {
-//        $offices = Issue::all()->pluck('office');
         $offices = DB::table('issues')->distinct('office')->pluck('office');
         $categories = [
             Category::ALL_CASES->value,
