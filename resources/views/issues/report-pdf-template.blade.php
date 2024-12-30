@@ -574,13 +574,13 @@
                 <tr>
                     <td rowspan="3" colspan="2" style="width: 167px">إجمالي عدد القضايا <span>: {{$issues->count()}}</span></td>
                     <td class="cell-success"> اليسيرة غير المتعثرة <span>: {{$easy_issues_not_late_count}}</span></td>
-                    <td class="cell-success"> لها موعد قادم <span>: {{$no_next_appointment_count}}</span></td>
+                    <td class="cell-success"> لها موعد قادم <span>: {{$has_next_appointment_countgt}}</span></td>
                     <td class="cell-success"> أقل من أربع جلسات <span>: {{$less_than_four_sessions_count}}</span></td>
                     <td class="cell-success"> عمرها ١٥٠ يوما فأقل <span>: {{$age_less_than_150_days}}</span> <span style="float: left;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#257723" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-square"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg></span></td>
                 </tr>
                 <tr>
                     <td class="cell-danger"> اليسيرة المتعثرة <span>: {{$easy_issues_late_count}}</span></td>
-                    <td class="cell-danger"> ليس لها موعد قادم <span>: {{$has_next_appointment_count}}</span></td>
+                    <td class="cell-danger"> ليس لها موعد قادم <span>: {{$no_next_appointment_count}}</span></td>
                     <td class="cell-warning"> أربع جلسات <span>: {{$four_session_count}}</span></td>
                     <td class="cell-warning"> عمرها بين ١٥١ إلى ١٧٩ يوما <span>: {{$age_between_151_to_179_days}}</span> <span style="float: left;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#956239" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-triangle"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg></span></td>
                 </tr>
