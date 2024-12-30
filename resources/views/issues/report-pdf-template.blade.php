@@ -574,7 +574,7 @@
                 <tr>
                     <td rowspan="3" colspan="2" style="width: 167px">إجمالي عدد القضايا <span>: {{$issues->count()}}</span></td>
                     <td class="cell-success"> اليسيرة غير المتعثرة <span>: {{$easy_issues_not_late_count}}</span></td>
-                    <td class="cell-success"> لها موعد قادم <span>: {{$has_next_appointment_countgt}}</span></td>
+                    <td class="cell-success"> لها موعد قادم <span>: {{$has_next_appointment_count}}</span></td>
                     <td class="cell-success"> أقل من أربع جلسات <span>: {{$less_than_four_sessions_count}}</span></td>
                     <td class="cell-success"> عمرها ١٥٠ يوما فأقل <span>: {{$age_less_than_150_days}}</span> <span style="float: left;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#257723" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-square"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg></span></td>
                 </tr>
