@@ -243,13 +243,13 @@ class IssueExport implements FromQuery, WithMapping, WithHeadings, WithTitle, Wi
                 $event->sheet->getDelegate()->getStyle('A' . $row_count)->getalignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
                 $event->sheet->getDelegate()->getStyle('A' . $row_count)->getalignment()->setVertical(Alignment::VERTICAL_CENTER);
 
-                $event->sheet->getDelegate()->setCellValue('C' . $row_count, ' اليسيرة غير المتعثرة: ' . Issue::where('office', $this->office)->where('money_claimed' , '<=', 50000)->where('age', '<=', 90)->count());
+                $event->sheet->getDelegate()->setCellValue('C' . $row_count, ' اليسيرة غير المتعثرة: ' . Issue::where('office', $this->office)->where('money_claimed' , '<=', 50000)->where('money_claimed', '>', 0)->where('age', '<=', 90)->count());
                 $event->sheet->getDelegate()->getStyle('C' . $row_count)->getFill()->setFillType(Fill::FILL_SOLID);
                 $event->sheet->getDelegate()->getStyle('C' . $row_count)->getFill()->getStartColor()->setARGB('b0ffe2');
                 $event->sheet->getDelegate()->getStyle('C' . $row_count)->getFont()->getColor()->setARGB('0d9e53');
 
                 $row_count++;
-                $event->sheet->getDelegate()->setCellValue('C' . $row_count, ' اليسيرة المتعثرة: ' . Issue::where('office', $this->office)->where('money_claimed' , '<=', 50000)->where('age', '>', 90)->count() );
+                $event->sheet->getDelegate()->setCellValue('C' . $row_count, ' اليسيرة المتعثرة: ' . Issue::where('office', $this->office)->where('money_claimed' , '<=', 50000)->where('money_claimed', '>', 0)->where('age', '>', 90)->count() );
                 $event->sheet->getDelegate()->getStyle('C' . $row_count)->getFill()->setFillType(Fill::FILL_SOLID);
                 $event->sheet->getDelegate()->getStyle('C' . $row_count)->getFill()->getStartColor()->setARGB('fa6e7e');
                 $event->sheet->getDelegate()->getStyle('C' . $row_count)->getFont()->getColor()->setARGB('d11b2d');
